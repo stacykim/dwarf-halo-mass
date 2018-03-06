@@ -7,3 +7,10 @@ Ideas for measuring halo masses of dwarfs.
 5. Galaxy stellar mass function (abundance matching; can/should be used in combination with 1)
   a. Low-ish redshift.
   b. Local Group (low stats but can get down to really tiny stellar masses).
+
+
+Some thoughts about benchmarks:
+  1. LMC mass (2x10^9 Msun in stellar mass): starts to be the place where "Too Big To Fail In The Field" problem arises; we think that the galaxy stellar mass function is probably reliable already for masses larger than this.  Can calibrate masses with several methods, plays a critical role in being able to push mass estimation techniques to lower masses.
+  2. Fornax mass (2x10^7 Msun in stellar mass): where "Too Big To Fail" arises; galaxy stellar mass functions probably subject to significant surface brightness completeness issues today (lots of the new UDGs are sort of in this range), and definitely for lower stellar masses.
+  3. Ultrafaints (<10^5 Msun):  Starting to get satellite luminosity functions on these scales for nearby galaxies; low surface brightness a challege for existing searches; holy grail for DM science; searches are going to be very local.
+  

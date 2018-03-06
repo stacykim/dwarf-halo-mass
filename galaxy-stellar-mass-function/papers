@@ -1,1 +1,5 @@
-Papers relevant for galaxy stellar mass functions
+Papers relevant for galaxy stellar mass functions.
+
+GAMA luminosity function paper: http://adsabs.harvard.edu/abs/2015MNRAS.451.1540L They claim a luminosity function down to -13ish in r.  Question: how complete is this?  And how does this compare to the ALFALFA and Klypin et al. 2015 vrot/luminosity functions for the Local Volume?
+
+Munoz et al. Fornax galaxy cluster UDG paper: http://adsabs.harvard.edu/abs/2015ApJ...813L..15M The key plot is Fig. 2, which shows the surface brightness of galaxies in Fornax (including the new discoveries) relative to other galaxy populations.  Note the low average surface brightess of galaxies fainter than M_I = -15.

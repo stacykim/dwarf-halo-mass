@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 import galsim
 
 #### Basic inputs, should be made settable on the command line, but fix them here for now.
-# Should we make and show diagnostic plots?
+# Should we make and save diagnostic plots?
 do_plot = True
+plot_pref = 'foo'
 # We are using a redshift slice, within which abundance and stellar vs. halo mass relation is
 # assumed not to evolve.
 z_min = 0.2
@@ -23,7 +24,7 @@ omega_m = 0.3
 omega_lam = 1.-omega_m
 # LSST sky fraction.
 f_sky = 16000.0/40000
-# Input file: expected format is three columns, with the first being the log10(M*h/Msun), the second
+# Input file: expected format is three columns, with the first being the mass in h/Msun, the second
 # being log10(comoving abundance in (h/Mpc)^3), and third is concentration.  We assume equal spacing
 # in log10(M*h/Msun).  This has presumably be set by assuming some halo mass function, stellar
 # vs. halo mass relation with mean and scatter, and then a lower and upper stellar mass limit.  All
@@ -36,7 +37,7 @@ n_rp = 10
 
 #### Read in data.
 dat = np.loadtxt(input_data_file).transpose()
-logm = dat[0,:]
+logm = np.log10(dat[0,:])
 abundance = dat[1,:]
 conc = dat[2,:]
 n_bin = len(logm)
@@ -64,7 +65,7 @@ if do_plot:
     ax.set_yscale('log')
     plt.xlabel(r'log10($M_{halo}$)')
     plt.ylabel(r'Number of lenses')
-    plt.show()
+    plt.savefig(plot_pref + '_nlens.pdf')
 
 #### Next calculation: stacked lensing signal.
 # Set up bins in proper (not comoving) separation.  These are kpc/h.
@@ -100,7 +101,7 @@ if do_plot:
     ax.set_xscale('log')
     plt.xlabel(r'$r_p$ [kpc/h]')
     plt.ylabel(r'$\gamma_t$')
-    plt.show()
+    plt.savefig(plot_pref + '_shear.pdf')
 
 #### Uncertainty in stacked lensing signal.
 # Shape noise errors!
@@ -121,7 +122,7 @@ if do_plot:
     ax.set_xscale('log')
     plt.xlabel(r'$r_p$ [kpc/h]')
     plt.ylabel(r'$\sigma(\gamma_t)$')
-    plt.show()
+    plt.savefig(plot_pref + '_sigma_shear.pdf')
 
 # Signal-to-noise!
 signal_to_noise = avg_shear / shape_noise
@@ -132,4 +133,4 @@ if do_plot:
     ax.set_xscale('log')
     plt.xlabel(r'$r_p$ [kpc/h]')
     plt.ylabel(r'S/N')
-    plt.show()
+    plt.savefig(plot_pref + '_shear_SN.pdf')

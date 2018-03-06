@@ -1,11 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import galsim
+import sys
+
+assert len(sys.argv)==3, 'Not enough command line arguments'
 
 #### Basic inputs, should be made settable on the command line, but fix them here for now.
 # Should we make and save diagnostic plots?
 do_plot = True
-plot_pref = 'foo'
+plot_pref = sys.argv[2]
 # We are using a redshift slice, within which abundance and stellar vs. halo mass relation is
 # assumed not to evolve.
 z_min = 0.2
@@ -29,7 +32,7 @@ f_sky = 16000.0/40000
 # in log10(M*h/Msun).  This has presumably be set by assuming some halo mass function, stellar
 # vs. halo mass relation with mean and scatter, and then a lower and upper stellar mass limit.  All
 # halo masses are assumed to be 200*rhocrit because that's what GalSim wants.
-input_data_file = 'fake_input_data.txt'
+input_data_file = sys.argv[1]
 # Establish radial bins for lensing signal, in kpc/h.
 rp_min = 30.0
 rp_max = 500.0
@@ -129,7 +132,7 @@ signal_to_noise = avg_shear / shape_noise
 if do_plot:
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.plot(rp_bin_mid, signal_to_noise)
+    ax.scatter(rp_bin_mid, signal_to_noise)
     ax.set_xscale('log')
     plt.xlabel(r'$r_p$ [kpc/h]')
     plt.ylabel(r'S/N')
